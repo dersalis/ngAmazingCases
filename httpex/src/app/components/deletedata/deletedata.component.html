@@ -1,0 +1,18 @@
+<div class="container">
+  <h4>DELETE - Usuwanie posta</h4>
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary" (click)="deletePost()">Usuń posta</button>
+  </div>
+
+  <div *ngIf="deletedPost" class="card" style="margin-top: 30px;">
+    <div class="card-header">
+      Usunięty post
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Json</h5>
+      <p class="card-text">{{ deletedPost | json }}</p>
+    </div>
+  </div>
+
+</div>

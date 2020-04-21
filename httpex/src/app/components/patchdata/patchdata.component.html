@@ -1,0 +1,19 @@
+<div class="container">
+  <h4>PATCH - Aktualizacja posta </h4>
+  <p>Usktualnia poszczególne wartości posta</p>
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary" (click)="updatePost()">Uaktualnij posta</button>
+  </div>
+
+  <div *ngIf="patchedPost" class="card" style="margin-top: 30px;">
+    <div class="card-header">
+      Zaktualizowany post
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Json</h5>
+      <p class="card-text">{{ patchedPost | json }}</p>
+    </div>
+  </div>
+
+</div>

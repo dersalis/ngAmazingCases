@@ -1,0 +1,21 @@
+<div class="container">
+  <h4>GET - Zwracanie postów</h4>
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary" (click)="getPosts()">Wszystkie</button>
+    <button type="button" class="btn btn-secondary" (click)="getPost(1)">Pierwszy</button>
+    <button type="button" class="btn btn-secondary" (click)="getPostsByUser(1)">Użytkownika</button>
+  </div>
+
+  <div class="list-group" style="margin-top: 30px;">
+    <a *ngFor="let post of posts; let in = index" href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{ post.title }}</h5>
+        <small>{{ in + 1 }}</small>
+      </div>
+      <p class="mb-1">{{ post.body }}</p>
+      <!-- <small>Donec id elit non mi porta.</!-->
+    </a>
+  </div>
+
+</div>
