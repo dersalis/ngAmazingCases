@@ -1,0 +1,20 @@
+<div class="row justify-content-center">
+  <form (ngSubmit)="login(formData)" #formData="ngForm" class="col-lg-4">
+    <div class="form-group">
+      <label for="email">Adres e-mail</label>
+      <input ngModel type="email" class="form-control" id="email" name="email" placeholder="Adres e-mail..." required>
+      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+    <div class="form-group">
+      <label for="password">Hasło</label>
+      <input ngModel type="password" class="form-control" id="password" name="password" placeholder="Hasło..." required>
+    </div>
+    <!-- <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div> -->
+    <button [disabled]="formData.invalid" type="submit" class="btn btn-primary">Zaloguj</button>
+    <button (click)="signup(formData)" [disabled]="formData.invalid" type="button" class="btn btn-info" style="margin-left: 5px;">Rejestracja</button>
+  </form>
+</div>
+
