@@ -1,1 +1,68 @@
-<p>reactive works!</p>
+
+<h4 style="margin-top: 30px;">Reactive Form</h4>
+
+<div class="" style="margin-top: 40px;">
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="topic">Temat:</label>
+      <input formControlName="topic" type="text" class="form-control" id="topic" placeholder="tytuł...">
+      <small *ngIf="contactForm.get('topic').invalid && contactForm.get('topic').dirty" class="form-text text-muted">Pole wymagane!</small>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Wiadomość:</label>
+      <textarea formControlName="message" formControlName="message" ow="4" type="text" class="form-control" id="message" placeholder="wiadomość..."></textarea>
+      <small *ngIf="contactForm.get('message').invalid  && contactForm.get('message').dirty" class="form-text text-muted">Pole wymagane!</small>
+      <small *ngIf="contactForm.get('message').errors && contactForm.get('message').errors.minlength" class="form-text text-muted">Wiadomość musi mieć 50 znaków!</small>
+      <!-- <small *ngIf="msg.errors && msg.errors.maxlength" class="form-text text-muted">Wiadomość nie może mieć więcej niż 75 znaków!</small> -->
+    </div>
+
+    <div class="form-group">
+      <label for="name">Nazwa:</label>
+      <input formControlName="name" type="text" class="form-control" id="name" placeholder="nazwa...">
+      <small *ngIf="contactForm.get('name').invalid  && contactForm.get('name').dirty" class="form-text text-muted">Pole wymagane!</small>
+    </div>
+
+    <div class="form-group">
+      <label for="email">E-mail:</label>
+      <input formControlName="email" type="text" class="form-control" id="email" placeholder="e-mail...">
+      <small *ngIf="contactForm.get('email').invalid  && contactForm.get('email').dirty" class="form-text text-muted">Pole wymagane!</small>
+      <small *ngIf="contactForm.get('email').errors && contactForm.get('email').errors.email" class="form-text text-muted">Adres e-mail jest nie poprawny!</small>
+    </div>
+
+    <div class="form-group">
+      <label for="course">Który kurs jest najciekawszy?</label>
+      <select formControlName="course" id="course" class="form-control">
+        <option *ngFor="let cours of courses" [value]="cours">{{cours}}</option>
+      </select>
+    </div>
+
+    <div class="form-check">
+      <input formControlName="bot" [value]="true" class="form-check-input" type="radio" name="bot" id="bot1">
+      <label class="form-check-label" for="exampleRadios1">
+        Tak
+      </label>
+    </div>
+    <div class="form-check">
+      <input formControlName="bot" [value]="false" class="form-check-input" type="radio" name="bot" id="bot2">
+      <label class="form-check-label" for="exampleRadios2">
+        Nie
+      </label>
+    </div>
+
+    <div class="form-group" style="margin-top: 15px; margin-bottom: 0px;">
+      <label for="email">Czego chcesz się nauczyć?</label>
+    </div>
+    <div formArrayName="questions">
+      <div *ngFor="let question of contactForm.get('questions')['controls'], let i = index">
+        <input type="text" class="form-control" [formControlName]="i" style="margin-top: 5px;"/>
+      </div>
+      <small *ngIf="contactForm.get('questions').errors && contactForm.get('questions').errors['forbbidenCours']" class="form-text text-muted">Kurs zabroniony</small>
+
+      <button (click)="addQuestion()" type="button" class="btn btn-default" style="margin-top: 5px">Dodaj</button>
+    </div>
+
+    <button [disabled]="contactForm.invalid" type="submit" class="btn btn-primary" style="margin-top: 30px;">Zapisz</button>
+    <button (click)="onReset()" type="button" class="btn btn-info" style="margin-top: 30px; margin-left: 5px">Anuluj</button>
+  </form>
+</div>

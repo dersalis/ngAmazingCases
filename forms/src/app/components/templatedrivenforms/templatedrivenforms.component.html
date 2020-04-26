@@ -1,5 +1,5 @@
 <!-- Wszystkie pola muszą mieć właściwość id, name -->
-
+<h4 style="margin-top: 30px;">Template Driven Form</h4>
 <div class="" style="margin-top: 40px;">
   <form (ngSubmit)="onSubmit()" #contForm="ngForm">
     <div class="form-group">
@@ -43,19 +43,19 @@
     </div>
 
     <div class="form-check">
-      <input [(ngModel)]="message.bot" [value]="true" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-      <label class="form-check-label" for="exampleRadios1">
+      <input [(ngModel)]="message.bot" [value]="true" class="form-check-input" type="radio" name="bot" id="bot1">
+      <label class="form-check-label" for="bot1">
         Tak
       </label>
     </div>
     <div class="form-check">
-      <input [(ngModel)]="message.bot" [value]="false" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-      <label class="form-check-label" for="exampleRadios2">
+      <input [(ngModel)]="message.bot" [value]="false" class="form-check-input" type="radio" name="bot" id="bot2">
+      <label class="form-check-label" for="bot2">
         Nie
       </label>
     </div>
 
     <button type="submit" [disabled]="!contForm.valid" class="btn btn-primary" style="margin-top: 30px;">Zapisz</button>
-    <button type="reset" (click)="reset()" class="btn btn-primary" style="margin-top: 30px;">Anuluj</button>
+    <button type="reset" (click)="reset()" class="btn btn-info" style="margin-top: 30px; margin-left: 5px">Anuluj</button>
   </form>
 </div>
